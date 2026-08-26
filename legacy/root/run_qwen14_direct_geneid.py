@@ -1,0 +1,82 @@
+# -*- coding: utf-8 -*-
+
+import json
+import re
+from pathlib import Path
+
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+
+MODEL_NAME = "Qwen/Qwen2.5-14B-Instruct"
+
+INPUT = Path("direct_llm_fulltest_prompts.jsonl")
+OUTPUT = Path("direct_llm_geneid_predictions_qwen14.txt")
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print("device:", device)
+
+print("loading tokenizer...")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+
+print("loading model...")
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_NAME,
+    torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+    device_map="auto",
+)
+model.eval()
+
+
+done = set()
+if OUTPUT.exists():
+    with open(OUTPUT, encoding="utf-8") as f:
+        for line in f:
+            m = re.search(r"(direct_case_\d+)", line)
+            if m:
+                done.add(m.group(1))
+
+
+with open(INPUT, encoding="utf-8") as f, \
+     open(OUTPUT, "a", encoding="utf-8") as out:
+
+    for line in f:
+        ex = json.loads(line)
+        cid = ex["case_id"]
+
+        if cid in done:
+            continue
+
+        prompt = ex["prompt_geneid"]
+
+        messages = [
+            {"role": "user", "content": prompt}
+        ]
+
+        text = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+
+        inputs = tokenizer(text, return_tensors="pt").to(model.device)
+
+        with torch.no_grad():
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=32,
+                do_sample=False,
+            )
+
+        response = tokenizer.decode(
+            outputs[0][inputs["input_ids"].shape[-1]:],
+            skip_special_tokens=True,
+        ).strip()
+
+        m_gid = re.search(r"GeneID:\s*([0-9]+)", response)
+        pred = m_gid.group(1) if m_gid else "NONE"
+
+        out.write(f"{cid}\tGeneID: {pred}\n")
+        out.flush()
+
+        print(cid, pred)

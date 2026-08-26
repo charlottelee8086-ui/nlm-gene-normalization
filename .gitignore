@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+
+# Model checkpoints
+checkpoint-*/
+checkpoints/
+models/
+*.safetensors
+*.pt
+*.pth
+
+# Hugging Face cache
+.cache/
+huggingface/
+transformers_cache/
+
+# Large datasets
+*.arrow
+*.parquet
+
+# Embeddings and indexes
+*.npy
+*.npz
+*.faiss
+
+# Generated model outputs
+outputs/
+predictions/
+
+# Locally generated processed data
+data/processed/*
+!data/processed/.gitkeep
+
+# External resources
+data/external/*
+!data/external/.gitkeep
+*.bin
+*.gguf
+.env
+.env.*
+!.env.example
+*.ckpt
+wandb/

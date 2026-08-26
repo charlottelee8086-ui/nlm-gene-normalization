@@ -1,0 +1,82 @@
+# -*- coding: utf-8 -*-
+
+import json
+import re
+from pathlib import Path
+
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+
+MODEL_NAME = "Qwen/Qwen2.5-14B-Instruct"
+
+INPUT = Path("bioelqa_dev_species_prompts.jsonl")
+OUTPUT = Path("bioelqa_dev_species_predictions_qwen14.txt")
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print("device:", device)
+
+print("loading tokenizer...")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+
+print("loading model...")
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_NAME,
+    torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+    device_map="auto",
+)
+model.eval()
+
+
+done = set()
+if OUTPUT.exists():
+    with open(OUTPUT, encoding="utf-8") as f:
+        for line in f:
+            m = re.search(r"(dev_species_case_\d+)", line)
+            if m:
+                done.add(m.group(1))
+
+
+with open(INPUT, encoding="utf-8") as f, \
+     open(OUTPUT, "a", encoding="utf-8") as out:
+
+    for line in f:
+        ex = json.loads(line)
+        cid = ex["case_id"]
+
+        if cid in done:
+            continue
+
+        prompt = ex["prompt"]
+
+        messages = [
+            {"role": "user", "content": prompt}
+        ]
+
+        text = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+
+        inputs = tokenizer(text, return_tensors="pt").to(model.device)
+
+        with torch.no_grad():
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=32,
+                do_sample=False,
+            )
+
+        response = tokenizer.decode(
+            outputs[0][inputs["input_ids"].shape[-1]:],
+            skip_special_tokens=True,
+        ).strip()
+
+        m_sp = re.search(r"Species:\s*(human|mouse|rat|other|unclear)", response, re.I)
+        pred = m_sp.group(1).lower() if m_sp else "unclear"
+
+        out.write(f"{cid}\tSpecies: {pred}\n")
+        out.flush()
+
+        print(cid, pred)

@@ -1,0 +1,3 @@
+k,total_mentions,no_candidate,gold_in_candidates,recall_pct,correct,selector_accuracy_pct,final_accuracy_pct
+10,2729,582,1545,56.61,1214,78.58,44.49
+20,2729,582,1562,57.24,1175,75.22,43.06

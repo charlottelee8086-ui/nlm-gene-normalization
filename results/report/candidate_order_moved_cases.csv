@@ -1,0 +1,3 @@
+metric,mean_pct,std_pct
+followed_same_geneid_after_position_change,70.04,0.70
+repeated_original_answer_letter_after_position_change,4.75,0.79

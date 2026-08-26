@@ -1,0 +1,9 @@
+setting,selector_accuracy_pct,final_accuracy_pct,same_geneid_pct,same_letter_pct
+original,77.85,46.90,,
+shuffle_1,78.64,47.38,72.00,14.49
+shuffle_2,77.72,46.82,70.83,14.98
+shuffle_3,78.11,47.06,70.61,16.77
+shuffle_4,78.25,47.14,71.16,15.74
+shuffle_5,79.17,47.70,71.44,14.96
+shuffle_mean,78.38,47.22,71.21,15.39
+shuffle_std,0.55,0.33,0.55,0.89

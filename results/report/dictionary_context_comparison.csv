@@ -1,0 +1,3 @@
+context,recall_at_10_pct,selector_accuracy_pct,final_accuracy_pct
+window_500,60.25,74.88,45.12
+full_abstract,60.25,77.85,46.90

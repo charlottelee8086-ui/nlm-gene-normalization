@@ -1,0 +1,8 @@
+setting,metric,numerator,denominator,score_pct,status
+belb_literature,linking_accuracy,,,76.00,published_reference
+belb_reproduction,correct_links_over_recognized_spans,1488,1953,76.19,reproduced
+full_test_reported,correct_links_over_all_gold_mentions,1489,2729,54.56,reported_in_internship_report
+full_test_current_reproduction,correct_links_over_all_gold_mentions,1488,2729,54.53,reproduced_from_preserved_output
+tuple_precision,true_positive_over_all_predictions,1488,2014,73.88,reproduced
+tuple_recall,true_positive_over_all_gold_tuples,1488,3360,44.29,reproduced
+tuple_f1,tuple_level_f1,,,55.38,reproduced

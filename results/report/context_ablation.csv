@@ -1,0 +1,7 @@
+context,correct,candidate_recall,selector_accuracy,final_accuracy,invalid_outputs
+mention,706,45.15,62.09,28.04,192
+sentence,792,45.15,69.66,31.45,380
+three_sentences,802,45.15,70.54,31.85,450
+window_500,827,45.15,72.56,32.76,458
+abstract,864,45.15,75.99,34.31,500
+title_abstract,858,45.15,75.46,34.07,500
