@@ -2,9 +2,9 @@
 
 This repository contains the experiments from an internship project on gene and protein entity normalization using the NLM-Gene benchmark.
 
-The task starts from already annotated gene or protein mentions and assigns each mention to an NCBI GeneID. The project therefore focuses on entity normalization rather than named entity recognition.
+The task starts from already annotated gene or protein mentions and assigns each mention to an NCBI GeneID. The project therefore focuses on entity normalization.
 
-The experiments compare rule-based normalization, direct language-model prediction, symbol grounding, dictionary and SapBERT candidate retrieval, and Qwen-based candidate selection.
+The experiments compare rule-based normalization, direct language model prediction, symbol grounding, dictionary and SapBERT candidate retrieval, and Qwen-based candidate selection.
 
 ## Main questions
 
@@ -19,7 +19,7 @@ The project investigates several questions:
 
 ## Dataset
 
-The experiments use NLM-Gene.
+The experiments use NLM-Gene dataset.
 
 The official training set contains 450 documents and the official test set contains 100 documents.
 
@@ -31,7 +31,7 @@ For development, the original training set was split at the document level:
 | Development | 90 | 2,518 |
 | Official test | 100 | 2,729 |
 
-The official test set was kept separate from development experiments.
+And kept the official test separate from development experiments.
 
 ## Main full-test results
 
@@ -202,5 +202,5 @@ Create a Python environment and install the main dependencies:
 pip install -r requirements.txt
 ```
 
-Individual experiment directories contain additional usage notes.
+You can see the detail notes in each individual experiment directories.
 
