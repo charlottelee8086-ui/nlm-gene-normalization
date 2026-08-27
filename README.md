@@ -95,8 +95,7 @@ evaluation
 │   ├── post_report/
 │   └── exploratory/
 │
-├── results/
-│   ├── report/
+├── results/│
 │   ├── post_report/
 │   └── exploratory/
 │
@@ -205,8 +204,3 @@ pip install -r requirements.txt
 
 Individual experiment directories contain additional usage notes.
 
-## Internship report
-
-The full internship report and related documents can be kept under `reports/`.
-
-The repository preserves the experiment history behind the report while separating cleaned reusable code from historical scripts.
