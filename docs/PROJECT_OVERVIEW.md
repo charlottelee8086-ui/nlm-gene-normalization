@@ -74,7 +74,7 @@ These follow-up results are stored separately from the results reported in the i
 
 - `src/` contains reusable implementations.
 - `experiments/report/` contains experiments described in the internship report.
-- `experiments/post_report/` contains experiments run after the report was completed.
+- `experiments/additional_experiments/` contains experiments run after the report was completed.
 - `experiments/exploratory/` contains additional experiments that were investigated during the project.
 - `legacy/` keeps the original scripts used during development.
 - `results/` contains compact result tables.

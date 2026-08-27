@@ -223,7 +223,7 @@ The overall result is relatively stable, although individual predictions can cha
 
 Location:
 
-`experiments/post_report/full_abstract_test/`
+`experiments/additional_experiments/full_abstract_test/`
 
 These experiments were run after the internship report was completed.
 

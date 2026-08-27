@@ -92,11 +92,11 @@ evaluation
 │
 ├── experiments/
 │   ├── report/
-│   ├── post_report/
+│   ├── additional_experiments/
 │   └── exploratory/
 │
 ├── results/│
-│   ├── post_report/
+│   ├── additional_experiments/
 │   └── exploratory/
 │
 ├── data/
@@ -128,7 +128,7 @@ Contains the experiments described in the internship report.
 
 Each directory explains the corresponding experiment and shows how the reusable scripts are combined.
 
-### `experiments/post_report/`
+### `experiments/additional_experiments/`
 
 Contains experiments run after the internship report was finalized.
 

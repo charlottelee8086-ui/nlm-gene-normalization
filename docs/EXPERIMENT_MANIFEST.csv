@@ -26,6 +26,6 @@ report,4.10.2,Candidate size K15,development,dictionary,Qwen2.5-14B-Instruct,abs
 report,4.10.2,Candidate size K20,development,dictionary,Qwen2.5-14B-Instruct,abstract,20,61.12,72.45,44.28,verified,"1539 gold in candidates"
 report,4.10.3,Candidate order original,development,dictionary,Qwen2.5-14B-Instruct,abstract,10,60.25,77.85,46.90,verified,"Original dictionary ranking"
 report,4.10.3,Candidate order shuffle mean,development,dictionary,Qwen2.5-14B-Instruct,abstract,10,60.25,78.38,47.22,verified,"Five random permutations"
-post_report,,Full-abstract test K10,test,dictionary,Qwen2.5-14B-Instruct,abstract,10,56.61,78.58,44.49,verified,"Run after internship report; 1214 correct"
-post_report,,Full-abstract test K20,test,dictionary,Qwen2.5-14B-Instruct,abstract,20,57.24,75.22,43.06,verified,"Run after internship report; 1175 correct"
+additional_experiments,,Full-abstract test K10,test,dictionary,Qwen2.5-14B-Instruct,abstract,10,56.61,78.58,44.49,verified,"Run after internship report; 1214 correct"
+additional_experiments,,Full-abstract test K20,test,dictionary,Qwen2.5-14B-Instruct,abstract,20,57.24,75.22,43.06,verified,"Run after internship report; 1175 correct"
 exploratory,,Symbol grounding without species,test,NCBI symbol lookup,Qwen2.5-14B-Instruct,window_500,,,,2.16,verified,"2641 mapped; 59 correct"
