@@ -6,4 +6,4 @@ The files are preserved mainly for traceability. Many of them were written while
 
 For a cleaner view of the project, use the code under `src/` and the experiment descriptions under `experiments/`.
 
-The original files in this directory are intentionally kept close to their historical versions rather than being rewritten.
+This directory contains some historical codes used during the experimental reasoning process.
