@@ -1,28 +1,67 @@
 # Data
 
-Large datasets and generated model files are not stored directly in this repository.
+The original datasets and large external resources are not stored in this repository.
 
 ## NLM-Gene
 
 The experiments use the NLM-Gene benchmark.
 
-The original training set contains 450 documents. For development experiments, it was split at the document level into:
+The official dataset should be downloaded separately and converted to the format expected by the experiment scripts.
 
-- 360 training documents
-- 90 development documents
+The project uses:
 
-The official 100-document test set was kept unchanged.
+- 360 training documents with 10,164 mentions
+- 90 development documents with 2,518 mentions
+- 100 official test documents with 2,729 mentions
 
-All mentions from the same document were kept in the same split.
+The train/development split was created at the document level from the original NLM-Gene training set.
 
 ## NCBI Gene
 
-NCBI Gene `gene_info` data was used to build symbol, synonym, GeneID, and species lookup tables.
+The project uses the NCBI Gene `gene_info` resource for:
 
-The large source file and generated full dictionaries are not committed to Git. Scripts for building the required resources are provided under `src/data/`.
+- official gene symbols;
+- gene synonyms and aliases;
+- TaxIDs;
+- species-aware symbol grounding;
+- dictionary construction;
+- SapBERT candidate representations.
 
-## Generated files
+Download `gene_info` from the official NCBI Gene resources and place it locally at:
 
-Candidate lists, complete prompt files, model predictions, SapBERT embeddings, and model checkpoints can be regenerated from the scripts in this repository and are not stored here by default.
+`data/external/gene_info`
 
-Small split files, examples, and final result tables may be included when they are useful for reproducibility.
+The file is not committed to Git.
+
+Project-specific lookup tables can then be generated with scripts under:
+
+`src/data/`
+
+For example:
+
+`src/data/build_ncbi_symbol_taxid_kb.py`
+
+Generated tables should be stored under:
+
+`data/processed/`
+
+## GNormPlus species assignments
+
+The historical symbol-grounding experiment also uses document-level species assignments produced by GNormPlus.
+
+For the cleaned repository, place the corresponding PubTator file at:
+
+`data/external/gnormplus_tmp_SA.PubTator`
+
+This file is also treated as an external resource and is not committed to Git.
+
+## Directory layout
+
+```text
+data/
+├── README.md
+├── external/
+│   ├── gene_info
+│   └── gnormplus_tmp_SA.PubTator
+└── processed/
+    └── generated project files
