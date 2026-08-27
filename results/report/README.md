@@ -15,4 +15,4 @@ Current summaries include:
 
 The complete experiment sequence and main benchmark results are summarized in `docs/EXPERIMENTS.md` and `docs/EXPERIMENT_MANIFEST.csv`.
 
-Results produced after the internship report are kept separately under `results/additional_experiments/`.
+Also have some results under `results/additional_experiments/`.
