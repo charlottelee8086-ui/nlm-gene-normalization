@@ -1,10 +1,6 @@
 # Full-abstract evaluation on the official test set
 
-This experiment was run after the internship report was completed.
-
 It extends the dictionary-based candidate-selection pipeline by using the full abstract as context on the official NLM-Gene test set.
-
-These results are kept separate from the results reported in the internship report.
 
 ## Setup
 
