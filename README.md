@@ -1,4 +1,4 @@
-📄 [You can read the paper here]([https://openreview.net/pdf?id=lf3JIvXJr0])
+📄 [You can read the paper here](https://openreview.net/pdf?id=lf3JIvXJr0)
 
 # Gene and Protein Normalization on NLM-Gene
 
