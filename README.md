@@ -1,3 +1,5 @@
+📄 [You can read the paper here]([https://openreview.net/pdf?id=lf3JIvXJr0])
+
 # Gene and Protein Normalization on NLM-Gene
 
 This repository contains the experiments from an internship project on gene and protein entity normalization using the NLM-Gene benchmark.
